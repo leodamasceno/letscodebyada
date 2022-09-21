@@ -1,0 +1,15 @@
+replicaCount: 1
+environment: sandbox
+
+app:
+  name: letscodebyada-backend
+  port: 8080
+
+image:
+  name: damascenolnx/letscodebyada
+  tag: 0.1-backend
+
+mysql:
+  url: "jdbc:mysql://mariadb.gse-pocs.svc.cluster.local:3306/letscodebyada"
+  user: test
+  password: test
