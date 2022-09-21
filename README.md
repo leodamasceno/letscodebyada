@@ -39,6 +39,11 @@ First, go to the docker directory and choose the application to build:
     -t damascenolnx/letscodebyada:0.5-frontend .
 **DO NOT FORGET** to update the value *backend-dns.example.com* to your ingress endpoint or DNS entry.
 
+Then, push the image to a public repository. I decided to use Docker Hub:
+
+    docker push damascenolnx/letscodebyada:0.5-frontend
+    docker push damascenolnx/letscodebyada:0.2-backend
+
 ## Dependencies
 I'm assuming you already have the EKS cluster working. If that's the case, connect to it and follow the steps below.
 #### Creating a namespace
