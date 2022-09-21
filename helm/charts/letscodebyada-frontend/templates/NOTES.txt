@@ -1,0 +1,6 @@
+The following resources were created:
+- Deployment
+- Service
+- Ingress
+
+The application will be available on the port 80

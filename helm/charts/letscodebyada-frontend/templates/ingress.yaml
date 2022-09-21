@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/security-groups: sg-086df460445ab14b6, sg-08046da513067ea0e
+    alb.ingress.kubernetes.io/subnets: subnet-0db44c51, subnet-f921e39e
+    alb.ingress.kubernetes.io/success-codes: 200,301,302
+    meta.helm.sh/release-name: {{ .Values.app.name }}
+  labels:
+    app: catalog-product-integration-api
+    environment: {{ .Values.environment }}
+  name: {{ .Values.app.name }}
+spec:
+  ingressClassName: aws-load-balancer
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Values.app.name }}
+            port:
+              number: 80
+        path: /*
+        pathType: ImplementationSpecific

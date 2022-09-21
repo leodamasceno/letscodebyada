@@ -1,0 +1,15 @@
+replicaCount: 1
+environment: sandbox
+
+app:
+  name: letscodebyada-backend
+  port: 8080
+
+image:
+  name: letscodebyada-backend
+  tag: 0.1
+
+mysql:
+  url: "jdbc:mysql://localhost"
+  user: test
+  password: test

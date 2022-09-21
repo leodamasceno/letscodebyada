@@ -1,0 +1,10 @@
+replicaCount: 1
+environment: sandbox
+
+app:
+  name: letscodebyada-frontend
+  port: 4200
+
+image:
+  name: damascenolnx/letscodebyada
+  tag: 0.5-frontend

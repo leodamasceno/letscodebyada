@@ -1,0 +1,27 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  annotations:
+    alb.ingress.kubernetes.io/healthcheck-path: /
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}]'
+    alb.ingress.kubernetes.io/scheme: internal
+    alb.ingress.kubernetes.io/security-groups: sg-086df460445ab14b6, sg-08046da513067ea0e
+    alb.ingress.kubernetes.io/subnets: subnet-92ae56ce, subnet-da24e6bd
+    alb.ingress.kubernetes.io/success-codes: 200,301,302,401
+    meta.helm.sh/release-name: {{ .Values.app.name }}
+  labels:
+    app: {{ .Values.app.name }}
+    environment: {{ .Values.environment }}
+  name: {{ .Values.app.name }}
+spec:
+  ingressClassName: aws-load-balancer
+  rules:
+  - http:
+      paths:
+      - backend:
+          service:
+            name: {{ .Values.app.name }}
+            port:
+              number: 80
+        path: /*
+        pathType: ImplementationSpecific
